@@ -1,0 +1,8 @@
+Programa para realizar para ejecutar robot web.
+
+Ejecucion app.exe para arrancar la aplicación. 
+El ejecutable se encuentra en la carpeta dist dentro del proyecto.
+
+Instalación de dependencias de python en local: (NO NECESARIAS PARA EJECUTAR EL PROGRAMA)
+pip install pyinstaller
+pyinstaller --onefile app.py
