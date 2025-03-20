@@ -16,7 +16,7 @@ def ejecutar_scraper(usuario, contrasena, url):
 
         # Configuración para Windows
         options = Options()
-        options.add_argument("--headless")  # Modo sin interfaz gráfica
+        #options.add_argument("--headless")  # Modo sin interfaz gráfica
 
         # No es necesario especificar la ruta de Firefox en Windows
         driver = webdriver.Firefox(
@@ -60,25 +60,24 @@ def ejecutar_scraper(usuario, contrasena, url):
             # Imprimir primera recompensa obtenida
             print("Primera recompensa obtenida")
 
-            # Hacer clic en el enlace 'Juega con tu equipo de hockey'
+            # Corrección en el scraper para cambiar entre deportes secuencialmente
             try:
+                # Intentar 'Juega con tu equipo de hockey' primero
                 hockey_link = driver.find_element(By.XPATH, "//a[@href='/?p=clubhouse&changesport=hockey']")
                 hockey_link.click()
                 print("Clic en 'Juega con tu equipo de hockey'")
+
             except Exception as e:
-                print("No se encontró el enlace de hockey:", e)
+                print("No se encontró el enlace de hockey, probando fútbol:", e)
+                try:
+                    # Si hockey falla, intentar con 'Juega con tu equipo de fútbol'
+                    soccer_link = driver.find_element(By.XPATH, "//a[@href='/?p=clubhouse&changesport=soccer']")
+                    soccer_link.click()
+                    print("Clic en 'Juega con tu equipo de fútbol'")
+                except Exception as e:
+                    print("No se encontró el enlace de fútbol tampoco:", e)
 
             time.sleep(5)
-
-            # Hacer clic en el enlace 'Juega con tu equipo de fútbol'
-            try:
-                hockey_link = driver.find_element(By.XPATH, "//a[@href='/?p=clubhouse&changesport=soccer']")
-                hockey_link.click()
-                print("Clic en 'Juega con tu equipo de fútbol'")
-            except Exception as e:
-                print("No se encontró el enlace de futbol:", e)
-
-            time.sleep(10)
 
             event_button = driver.find_element(By.CLASS_NAME, "offer")
             event_button.click()
