@@ -12,23 +12,6 @@ load_dotenv()
 
 def ejecutar_scraper(usuario, contrasena, url):
     try:
-        ruta = os.getenv("RUTA")
-        # Configuración para PythonAnywhere
-        print("Intentando ejecutar en PythonAnywhere...")
-        options = Options()
-        options.add_argument("--headless")  # Modo sin interfaz gráfica
-
-        # Especificar la ruta del binario de Firefox en PythonAnywhere
-        options.binary_location = ruta  # Ruta de Firefox en PythonAnywhere
-
-        # Usar webdriver_manager para instalar automáticamente GeckoDriver
-        driver = webdriver.Firefox(
-            service=Service(GeckoDriverManager().install()),  # Instala GeckoDriver automáticamente
-            options=options
-        )
-
-    except Exception as e:
-        print(f"Error en PythonAnywhere: {e}")
         print("Intentando ejecutar en Windows...")
 
         # Configuración para Windows
@@ -40,6 +23,9 @@ def ejecutar_scraper(usuario, contrasena, url):
             service=Service(GeckoDriverManager().install()),  # Instala GeckoDriver automáticamente
             options=options
         )
+    except Exception as e:
+                print("Error al ejecutar", e)
+    
     
     # Resto del código sin cambios
     if driver:  # Solo ejecutar si driver fue creado exitosamente
