@@ -16,7 +16,7 @@ def ejecutar_scraper(usuario, contrasena, url):
 
         # Configuración para Windows
         options = Options()
-        #options.add_argument("--headless")  # Modo sin interfaz gráfica
+        options.add_argument("--headless")  # Modo sin interfaz gráfica
 
         # No es necesario especificar la ruta de Firefox en Windows
         driver = webdriver.Firefox(
