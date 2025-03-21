@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['app.py'],
+    ['scraper.py'],
     pathex=[],
     binaries=[],
     datas=[],

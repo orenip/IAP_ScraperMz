@@ -5,4 +5,4 @@ El ejecutable se encuentra en la carpeta dist dentro del proyecto.
 
 Instalación de dependencias de python en local: (NO NECESARIAS PARA EJECUTAR EL PROGRAMA)
 pip install pyinstaller
-pyinstaller --onefile --name IAP-MZ_ElFurioso --icon=icono.ico app.py
+pyinstaller --onefile --name IAP-MZ_ElFurioso --icon=icono.ico scraper.py
